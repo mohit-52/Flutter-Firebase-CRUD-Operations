@@ -41,7 +41,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Post"),
+        title: Text("Add Post To Realtime DB"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),

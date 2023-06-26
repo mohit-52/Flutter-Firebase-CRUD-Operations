@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../utils/utils.dart';
 import '../../widgets/round_button.dart';
+import 'forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -125,6 +126,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                   title: "Login"),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ForgotPasswordScreen()));
+                    },
+                    child: Text("Forgot Password")),
+              ),
+
               const SizedBox(
                 height: 20,
               ),
@@ -165,33 +178,12 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 20,
               ),
-              // InkWell(
-              //   onTap: (){
-              //     Utils().toastMessage("Coming Soon...");
-              //    // signInWithGoogle();
-              //   },
-              //   child: Container(
-              //     height: 50,
-              //     decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(50),
-              //         border: Border.all(
-              //             color: Colors.purple
-              //         )
-              //     ),
-              //     child: Center(
-              //       child: Text("Login With Google"),
-              //     ),
-              //   ),
-              // )
+
             ],
           ),
         ),
       ),
     );
   }
-  signInWithGoogle() async{
-    // GoogleSignInAccount? googleUser = await
-    // AuthCredential credential = GoogleAuthProvider.credential();
-    //  FirebaseAuth.instance.signInWithCredential(credential);
-  }
+
 }

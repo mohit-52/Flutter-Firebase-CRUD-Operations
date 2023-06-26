@@ -20,7 +20,7 @@ class _FirestoreAddPostScreenState extends State<FirestoreAddPostScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Post"),
+        title: Text("Add Post To FireStore"),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),

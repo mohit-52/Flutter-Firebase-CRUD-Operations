@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_flutter/utils/utils.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/round_button.dart';
+import '../posts/post_screen.dart';
 import 'login_screen.dart';
 import 'package:firebase_flutter/utils/utils.dart';
 
@@ -33,6 +34,7 @@ class _SignupScreenState extends State<SignupScreen> {
         isLoading = false;
       });
       Utils().toastMessage("Account Created");
+      Navigator.push(context, MaterialPageRoute(builder: (builder)=>PostScreen() ));
     }).onError((error, stackTrace) {
       setState(() {
         isLoading = false;
