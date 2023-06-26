@@ -2,10 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_flutter/ui/auth/login_screen.dart';
+import 'package:firebase_flutter/ui/firestore/firestore_add_post.dart';
 import 'package:firebase_flutter/ui/posts/add_post.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../firebase_services/db_services.dart';
 import '../../utils/utils.dart';
+import '../splash_screen.dart';
 
 class PostScreen extends StatefulWidget {
   const PostScreen({Key? key}) : super(key: key);
@@ -22,9 +26,22 @@ class _PostScreenState extends State<PostScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final dbProvider = Provider.of<DbServices>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Posts Screen"),
+        leading: Consumer<DbServices>(builder: (context, value , child){
+          return InkWell(
+              onTap: (){
+                value.setRealtimeDb(false);
+                print(dbProvider.realtimeDb.toString());
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> SplashScreen()));
+                setState(() {
+
+                });
+              },
+              child: value.realtimeDb ? Icon(Icons.offline_bolt_outlined) : Icon(Icons.offline_bolt));
+        }),
+        title: Text("Realtime DB Posts Screen"),
         automaticallyImplyLeading: false,
         centerTitle: true,
         actions: [
@@ -85,12 +102,13 @@ class _PostScreenState extends State<PostScreen> {
                 query: ref,
                 itemBuilder: (context, snapshot, animation, index) {
                   final title = snapshot.child('title').value.toString();
+                  final image = snapshot.child('img').value.toString();
                   final id = snapshot.child('id').value.toString();
-
                   if (searchFilterController.text.isEmpty) {
                     return ListTile(
                       title: Text(title),
                       subtitle: Text(id),
+                      leading: Image(image: NetworkImage(image.toString()),),
                       trailing: PopupMenuButton(
                         icon: Icon(Icons.more_vert),
                         itemBuilder: (context) => [
@@ -127,6 +145,7 @@ class _PostScreenState extends State<PostScreen> {
                       .contains(searchFilterController.text.toLowerCase())) {
                     return ListTile(
                       title: Text(snapshot.child('title').value.toString()),
+                      leading: Image(image: NetworkImage(image.toString()),),
                       subtitle: Text(snapshot.child('id').value.toString()),
                     );
                   } else {

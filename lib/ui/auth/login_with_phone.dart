@@ -36,7 +36,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
               keyboardType: TextInputType.number,
               controller: _phoneNumberController,
               decoration: InputDecoration(
-                  hintText: "+91 98776 55434",
+                  hintText: "98776 XXXXX",
                   prefixIcon: Icon(Icons.phone_iphone_outlined)),
             ),
             SizedBox(
@@ -50,7 +50,7 @@ class _LoginWithPhoneNumberState extends State<LoginWithPhoneNumber> {
                     isLoading = true;
                   });
                   _auth.verifyPhoneNumber(
-                      phoneNumber: _phoneNumberController.text,
+                      phoneNumber: "+91${_phoneNumberController.text}",
                       verificationCompleted: (_) {
                         setState(() {
                           isLoading = false;
