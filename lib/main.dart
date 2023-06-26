@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_flutter/firebase_services/db_services.dart';
 import 'package:firebase_flutter/ui/splash_screen.dart';
-import 'package:firebase_flutter/ui/upload_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
