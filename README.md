@@ -1,8 +1,9 @@
-# firebase_flutter
+Setting up the project with Firebase for android and ios
 
-A new Flutter project.
+CRUD operation with Firebase real-time database
 
-## Getting Started
+CRUD operation with Firestore
 
-This project consists of the Integration of Flutter and Firebase.
-In this project, I have implemented the CRUD operations in Flutter using Firebase Realtime Database.
+Implementing Auth firebase
+
+Creating Blog application
